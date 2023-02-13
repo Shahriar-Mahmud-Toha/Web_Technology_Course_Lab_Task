@@ -1,0 +1,162 @@
+<!-- Name: Md. Shahriar Mahmud
+ID: 21-44498-1 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+
+<body>
+    <div align="center">
+        <h1>Registration</h1>
+        <form action="task1Registration.php" method="post" novalidate>
+            <table>
+                <td></td>
+                <td>
+                    <fieldset>
+                        <legend align="center"><b>General Information:</b></legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="fname"><b>First Name</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input id="fname" name="fname" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="lname"><b>Last Name</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input id="lname" name="lname" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="ftname"><b>Father's Name</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input id="ftname" name="ftname" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="mtname"><b>Mother's Name</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input id="mtname" name="mtname" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="male"><b>Gender</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b>Male<input type="radio" id="male" name="gender">Female<input type="radio"
+                                        id="female" name="gender"> &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="dob"><b>Date of Birth</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input type="date" name="dob" id="dob">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="bog"><b>Blood Group</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><select name="bog" id="bog">
+                                        <option value="A+">A+</option>
+                                        <option value="A">A</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B">B</option>
+                                        <option value="B-">B-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend align="center"><b>Contact Information:</b></legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="email"><b>Email</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input id="email" name="email" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="phone"><b>Phone/Mobile</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input id="phone" name="phone" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="web"><b>Website</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input id="web" name="web" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="address"><b>Present Address</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><textarea id="address" name="address" cols="21" rows="1"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend align="center"><b>Account Information:</b></legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="username"><b>Username</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input id="username" name="username" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="password"><b>Password</b></label>
+                                </td>
+                                <td>
+                                    <b>: </b><input id="password" name="password" type="password">
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <p align="center"><button type="submit" name="submit">Registration</button></p>
+                    <p>Already have an account? Login <a href="task1Login.html">here</a></p>
+                </td>
+                <td>
+                </td>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
