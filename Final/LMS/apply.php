@@ -26,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION["stdLoginVerified"]
                         $newFilePath = 'uploadedFiles\\' . $username . '\\' . $_FILES['attachment']['name'][$i];
                         if (file_exists($newFilePath)) {
                             unlink($newFilePath);
-                            $sql = 'DELETE FROM `a_files` WHERE filename="' . $_FILES['attachment']['name'][$i] . '"';
+                            $tbname = $username."_files";
+                            $sql = 'DELETE FROM `'.$tbname.'` WHERE filename="' . $_FILES['attachment']['name'][$i] . '"';
                             noOutputQueryToDB("lmsdb", $sql);
                         }
                         if (move_uploaded_file($tmpFilePath, $newFilePath)) {
