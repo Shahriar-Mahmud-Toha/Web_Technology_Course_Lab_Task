@@ -21,6 +21,8 @@ require "../Controller/essential_modules.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSI Computer Shop - Change Email</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="responsive_smallPhone.css">
 </head>
 
 <body>
@@ -72,7 +74,7 @@ require "../Controller/essential_modules.php";
             </table>
         </form>
     </div>
-    <?php include "footer.php"; ?>
+    <div class="endSpace"></div>
 </body>
 
 </html>

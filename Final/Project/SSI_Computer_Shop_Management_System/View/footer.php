@@ -19,36 +19,20 @@ if (!function_exists("getURL")) {
 }
 ?>
 <footer>
-    <?php lineSpaceProvider(8) ?>
-    <hr>
-    <div align="center">
-        <table>
-            <tr>
-                <td>
-                    <h3>ABOUT US</h3>
-                </td>
-                <td>
-                    <?php spaceProvider(100) ?>
-                </td>
-                <td>
-                    <h3>CONTACT US</h3>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    This website is created for manage SSI Computer Shop administrator department. <br>
-                    SSI Computer Shop is ecommerce website where Computer parts are sold.
-                </td>
-                <td></td>
-                <td>
-                    <b>SSI Computer Shop</b><br><br>
-                    <Address>
-                        Kuril-Bishshoroad, Dhaka, Bangladesh.
-                    </Address>
-                    Phone: 017xxxxxxxx <br>
-                    Email: info@ssicomputershop.com
-                </td>
-            </tr>
-        </table>
+    <div id="aboutUsDiv">
+        <h3>ABOUT US</h3>
+        <p>
+            This website is created for manage SSI Computer Shop administrator department.
+            SSI Computer Shop is ecommerce website where Computer parts are sold.
+        </p>
+    </div>
+    <div id="contactUsDiv">
+        <h3>CONTACT US</h3>
+        <p id="footerTitle"><b>SSI Computer Shop</b></p>
+        <Address>
+            Kuril-Bishshoroad, Dhaka, Bangladesh.
+        </Address>
+        <p>Phone: 017xxxxxxxx</p>
+        <p>Email: info@ssicomputershop.com</p>
     </div>
 </footer>

@@ -22,9 +22,12 @@ $_SESSION["deleteOk"] = true;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSI Computer Shop - Task</title>
+    <script src="validateForm.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="responsive_smallPhone.css">
 </head>
 
-<body>
+<body id="adminTaskId">
     <?php require "header_admin.php"; ?>
     <br>
     <?php
@@ -41,79 +44,72 @@ $_SESSION["deleteOk"] = true;
         setcookie("taskDeletedMsg", "", time() - 3600, "/");
     }
     ?>
-    <br><br>
-    <div align="center">
-        <table>
-            <td></td>
-            <td>
-                <form action="../Controller/addTask.php" method="post" novalidate>
-                    <textarea name="task" id="task" cols="40" rows="2"></textarea><br>
-                    <input type="submit" name="submit" value="Add this Task">
-                    <br>
-                </form>
+    <main>
+        <div class="taskContainer">
+            <form action="../Controller/addTask.php" method="post" novalidate
+                onsubmit="return validAdminTaskForm(this);">
+                <textarea class="taskAddTextArea" name="task" id="task" cols="40" rows="2"></textarea>
+                <p><input class="addThisTaskBtn" type="submit" name="submit" value="Add this Task"></p>
+            </form>
+            <?php
+            if (isset($_COOKIE["taskEmptyMsg"]) && $_COOKIE["taskEmptyMsg"]) {
+                echo "*  Empty task cannnot be added.";
+                setcookie("taskEmptyMsg", "", time() - 3600, "/");
+            }
+            ?>
+            <table class="taskTb">
+                <tr>
+                    <th class="snTask">
+                        SN
+                    </th>
+                    <th class="taskTask">
+                        Task
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th class="opTask">
+                        Operations
+                    </th>
+                </tr>
                 <?php
-                if (isset($_COOKIE["taskEmptyMsg"]) && $_COOKIE["taskEmptyMsg"]) {
-                    echo "*  Empty task cannnot be added.";
-                    setcookie("taskEmptyMsg", "", time() - 3600, "/");
+                $con = mysqli_connect('localhost', 'root', '', 'admindb');
+                if (!$con) {
+                    die("Failed. Error: " . mysqli_connect_error());
                 }
-                ?>
-                <br><br>
-                <table>
-                    <tr>
-                        <th width="150px" align="left">
-                            <font size="6px">SN</font>
-                        </th>
-                        <th width="600px" align="left">
-                            <font size="6px">Task</font>
-                        </th>
-                        <th width="200px" align="center">
-                            <font size="6px">Time</font>
-                        </th>
-                        <th width="200px" align="center">
-                            <font size="6px">Operations</font>
-                        </th>
-                    </tr>
-                    <?php
-                    $con = mysqli_connect('localhost', 'root', '', 'admindb');
-                    if (!$con) {
-                        die("Failed. Error: " . mysqli_connect_error());
-                    }
-                    $username = $_SESSION["username"];
-                    $sql = 'SELECT * FROM `tasktb`';
-                    $result = mysqli_query($con, $sql);
-                    if ($result) {
-                        while ($ans = mysqli_fetch_assoc($result)) {
-                            $sn = $ans["sn"];
-                            $task = $ans["task"];
-                            $time = $ans["time"];
-                            echo '
+                $username = $_SESSION["username"];
+                $sql = 'SELECT * FROM `tasktb`';
+                $result = mysqli_query($con, $sql);
+                if ($result) {
+                    while ($ans = mysqli_fetch_assoc($result)) {
+                        $sn = $ans["sn"];
+                        $task = $ans["task"];
+                        $time = $ans["time"];
+                        echo '
                             <tr>
                                 <td>
-                                <p align="left"><font size="4px">' . $sn . '</font></p>
+                                <p class="snTaskContent">' . $sn . '</p>
                                  </td>
                                 <td>
-                                <p align="left"><font size="4px">' . $task . '</font></p>
+                                <p class="snTaskContent">' . $task . '</p>
                                 </td>
                                 <td>
-                                    <p align="center"><font size="4px">' . $time . '</font></p>
+                                    <p class="timeTaskContent">' . $time . '</p>
                                 </td>
                                 <td>
-                                    <p align="center"><font size="4px"><a href="editTask.php?sn=' . $sn . '"><img src="Icons/edit.png" height="22px" width="22px" alt="edit-icon"></a>
-                                    <a href="../Controller/deleteTask.php?sn=' . $sn . '"><img src="Icons/delete.png" height="22px" width="22px" alt="delete-icon"></a></font></p>
+                                    <p class="timeTaskContent"><a href="editTask.php?sn=' . $sn . '"><img src="Icons/edit.png" height="22px" width="22px" alt="edit-icon"></a>
+                                    <a href="../Controller/deleteTask.php?sn=' . $sn . '"><img src="Icons/delete.png" height="22px" width="22px" alt="delete-icon"></a></font></pgn=>
                                 </td>
                             </tr>';
-                        }
                     }
-                    $con->close();
-                    ?>
-                </table>
-                <br>
-                <p align="center"><a href="admin.php">Go Back</a></p>
-            </td>
-            <td></td>
-        </table>
-    </div>
-    <?php include "footer.php"; ?>
+                }
+                $con->close();
+                ?>
+            </table>
+            <p class="goBackBtn"><a href="admin.php">Go Back</a></p>
+        </div>
+    </main>
+    <div class="endSpace"></div>
 </body>
 
 </html>

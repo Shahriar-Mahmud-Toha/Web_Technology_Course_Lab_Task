@@ -19,79 +19,45 @@ if (!$_SESSION["otpVerified"]) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSI Computer Shop - Reset Password</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="responsive_smallPhone.css">
 </head>
 
-<body>
+<body id="resetPassId">
     <?php require "header.php"; ?>
-    <div align="center">
-        <table>
-            <td></td>
-            <td>
-                <fieldset>
-                    <legend align="center">
-                        <h2>Reset Password</h2>
-                    </legend><br>
-                    <form action="../Controller/resetPasswordOP.php" method="post" novalidate>
-                        <table>
-                            <tr>
-                                <td>
-                                    <label for="npassword"><img src="Icons/password.png" height="25px" width="25px"
-                                            alt="password-icon"></label>
-                                </td>
-                                <td>
-                                    &nbsp; <input id="npassword" name="npassword" type="password"
-                                        placeholder="Enter new password"><br>&nbsp;
-                                    <?php
-                                    // if (isset($_SESSION["npasswordEmpty"])) {
-                                    //     if ($_SESSION["npasswordEmpty"]) {
-                                    //         echo "* New Password field cannot be Empty.";
-                                    //         // session_destroy();
-                                    //     }
-                                    // }
-                                    if (isset($_COOKIE["npasswordEmpty"]) && $_COOKIE["npasswordEmpty"]) {
-                                        echo "* New Password field cannot be Empty.";
-                                        setcookie("npasswordEmpty", "", time() - 3600, "/");
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="cnpassword"><img src="Icons/password.png" height="25px" width="25px"
-                                            alt="password-icon"></label>
-                                </td>
-                                <td>
-                                    &nbsp; <input id="cnpassword" name="cnpassword" type="password"
-                                        placeholder="Confirm new password"><br>&nbsp;
-                                    <?php
-                                    if (isset($_COOKIE["cnpasswordEmpty"]) && $_COOKIE["cnpasswordEmpty"]) {
-                                        echo "* Confirm New Password field cannot be Empty.";
-                                        setcookie("cnpasswordEmpty", "", time() - 3600, "/");
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                        </table>
-                        <p align="center">
-                            <?php
-                            if (isset($_COOKIE["bothPassUnmatched"]) && $_COOKIE["bothPassUnmatched"]) {
-                                echo "* New Password and Confirm New Password does not match.";
-                                setcookie("bothPassUnmatched", "", time() - 3600, "/");
-                            }
-                            if (isset($_COOKIE["errorMsg"]) && $_COOKIE["errorMsg"]) {
-                                echo "* Password reset unsuccessful.";
-                                setcookie("errorMsg", "", time() - 3600, "/");
-                            }
-                            ?>
-                        </p>
-                        <p align="center"><input type="submit" value="Send OTP"></p><br>
-                    </form>
-                </fieldset>
-            </td>
-            <td></td>
-        </table>
-    </div>
-    <?php include "footer.php"; ?>
+    <main align="center">
+        <form action="../Controller/resetPasswordOP.php" method="post" novalidate>
+            <h2 class="mt">Reset Password</h2>
+            <input class="inputBox" id="npassword" name="npassword" type="password" placeholder="Enter new password">
+            <?php
+            if (isset($_COOKIE["npasswordEmpty"]) && $_COOKIE["npasswordEmpty"]) {
+                echo "* New Password field cannot be Empty.";
+                setcookie("npasswordEmpty", "", time() - 3600, "/");
+            }
+            ?>
+            <input class="inputBox" id="cnpassword" name="cnpassword" type="password" placeholder="Confirm new password">
+            <?php
+            if (isset($_COOKIE["cnpasswordEmpty"]) && $_COOKIE["cnpasswordEmpty"]) {
+                echo "* Confirm New Password field cannot be Empty.";
+                setcookie("cnpasswordEmpty", "", time() - 3600, "/");
+            }
+            ?>
+            <p align="center">
+                <?php
+                if (isset($_COOKIE["bothPassUnmatched"]) && $_COOKIE["bothPassUnmatched"]) {
+                    echo "* New Password and Confirm New Password does not match.";
+                    setcookie("bothPassUnmatched", "", time() - 3600, "/");
+                }
+                if (isset($_COOKIE["errorMsg"]) && $_COOKIE["errorMsg"]) {
+                    echo "* Password reset unsuccessful.";
+                    setcookie("errorMsg", "", time() - 3600, "/");
+                }
+                ?>
+            </p>
+            <p align="center"><input class="submitBtnCreate" type="submit" value="Send OTP"></p><br>
+        </form>
+    </main>
+    <div class="endSpace"></div>
 </body>
 
 </html>

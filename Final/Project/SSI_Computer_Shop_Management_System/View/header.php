@@ -18,9 +18,9 @@ if (!function_exists("getURL")) {
     }
 }
 ?>
-<header align="center">
+<header>
     <a href="admin.php">
-        <img src="Icons/ssi_cs_logo.png" height="80px" width="80px" alt="Company Logo">
+        <img src="Icons/ssi_cs_logo.png" alt="Company Logo">
     </a>
     <h1>SSI Computer Shop - Administrator</h1>
 </header>

@@ -58,95 +58,80 @@ if (isset($_COOKIE["remember"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSI Computer Shop - Login</title>
+    <script src="validateForm.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="responsive_smallPhone.css">
 </head>
 
-<body>
+<body id="loginId">
     <?php require "header.php"; ?>
-    <div align="center">
-        <?php
-        if (isset($_COOKIE["resetSuccessMsg"]) && $_COOKIE["resetSuccessMsg"]) {
-            echo "*** Password reset Successfully ***";
-            setcookie("resetSuccessMsg", "", time() - 3600, "/");
-        }
-        if (isset($_COOKIE["successAcCrMsg"]) && $_COOKIE["successAcCrMsg"]) {
-            echo "*** Account created Successfully ***";
-            setcookie("successAcCrMsg", "", time() - 3600, "/");
-        }
-        ?>
-        <form action="../Controller/loginOP.php" method="post" novalidate>
-            <table>
-                <td></td>
-                <td>
-                    <fieldset>
-                        <legend align="center">
-                            <h2>Login</h2>
-                        </legend><br>
-                        <table>
-                            <tr>
-                                <td>
-                                    <label for="username"><img src="Icons/username.png" height="25px" width="25px"
-                                            alt="username-icon"></label>
-                                </td>
-                                <td>
-                                    &nbsp; <input id="username" name="username" value="<?php if (isset($_SESSION["username"])) {
-                                        echo $_SESSION["username"];
-                                    } else if (($username != null) && $remember) {
-                                        echo $username;
-                                    } ?>" type="text" placeholder="Enter your username"><br>&nbsp;
-                                    <?php
-                                    if (isset($_COOKIE["usernameEmptyMsg"]) && $_COOKIE["usernameEmptyMsg"]) {
-                                        echo "* Username cannot be Empty.";
-                                        setcookie("usernameEmptyMsg", "", time() - 3600, "/");
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="password"><img src="Icons/password.png" height="20px" width="20px"
-                                            alt="password-icon"></label>
-                                </td>
-                                <td>
-                                    &nbsp; <input id="password" name="password" type="password"
-                                        placeholder="Enter your password" value="<?php if (($password != null) && $remember) {
-                                            echo $password;
-                                        } ?>"><br>&nbsp;
-                                    <?php
-                                    if (isset($_COOKIE["passwordEmptyMsg"]) && $_COOKIE["passwordEmptyMsg"]) {
-                                        echo "* Password cannot be Empty.";
-                                        setcookie("passwordEmptyMsg", "", time() - 3600, "/");
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <?php
-                                    if (isset($_COOKIE["invalidInfo"]) && $_COOKIE["invalidInfo"]) {
-                                        echo "* Invalid Username or Password";
-                                        setcookie("invalidInfo", "", time() - 3600, "/");
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                        </table>
-                        <br>
-                        <div align="center">
-                            &nbsp;<input id="remember" name="remember" type="checkbox">
-                            <label for="remember">Remember Me</label><br>
-                            <label for="remember">(max 1 Device)</label>
-                        </div>
-                        <p align="center"><button type="submit" name="submit">Login</button></p><br>
-                        <p align="center"><a href="forgotPassword.php">Forgotten Password?</a></p>
-                    </fieldset>
-                    <p align="center">Don't have an account? <a href="signup.php">Signup</a></p>
-                </td>
-                <td></td>
-            </table>
-        </form>
-    </div>
-    <?php include "footer.php"; ?>
+    <main>
+        <div class="mainDiv">
+            <?php
+            if (isset($_COOKIE["resetSuccessMsg"]) && $_COOKIE["resetSuccessMsg"]) {
+                echo "<span class='successMsg'>*** Password reset Successfully ***</span>";
+                setcookie("resetSuccessMsg", "", time() - 3600, "/");
+            }
+            if (isset($_COOKIE["successAcCrMsg"]) && $_COOKIE["successAcCrMsg"]) {
+                echo "<span class='successMsg'>*** Account created Successfully ***</span>";
+                setcookie("successAcCrMsg", "", time() - 3600, "/");
+            }
+            $usernameEmptyFlag = false;
+            $passwordEmptyFlag = false;
+            $invalidInfoFlag = false;
+            if (isset($_COOKIE["usernameEmptyMsg"]) && $_COOKIE["usernameEmptyMsg"]) {
+                $usernameEmptyFlag = true;
+            }
+            if (isset($_COOKIE["passwordEmptyMsg"]) && $_COOKIE["passwordEmptyMsg"]) {
+                $passwordEmptyFlag = true;
+            }
+            if (isset($_COOKIE["invalidInfo"]) && $_COOKIE["invalidInfo"]) {
+                $invalidInfoFlag = true;
+            }
+            ?>
+            <form action="../Controller/loginOP.php" method="post" novalidate onsubmit="return validLoginForm(this);">
+                <img id="demoUserLogo" src="Icons/user-white.png" alt="Demo User Logo">
+                <h2 class="mt">Login</h2>
+                <!-- <label for="username"><img src="Icons/username.png" height="25px" width="25px" alt="username-icon"></label> -->
+                <input class="inputBox <?php if ($usernameEmptyFlag || $invalidInfoFlag) {echo "emptyInputBox";} ?>" id="username" name="username" value="<?php if (isset($_SESSION["username"])) {
+                    echo $_SESSION["username"];
+                } else if (($username != null) && $remember) {
+                    echo $username;
+                } ?>" type="text" placeholder="Enter your username">
+                <?php
+                if ($usernameEmptyFlag) {
+                    echo "<span class='invalidMsg'>* Username cannot be Empty.</span>";
+                    setcookie("usernameEmptyMsg", "", time() - 3600, "/");
+                }
+                ?>
+                <!-- <label for="password"><img src="Icons/password.png" height="20px" width="20px" alt="password-icon"></label> -->
+                <input class="inputBox <?php if ($passwordEmptyFlag || $invalidInfoFlag) {echo "emptyInputBox";} ?>" id="password" name="password" type="password" placeholder="Enter your password"
+                    value="<?php if (($password != null) && $remember) {
+                        echo $password;
+                    } ?>">
+                <?php
+                if ($passwordEmptyFlag) {
+                    echo "<span class='invalidMsg'>* Password cannot be Empty.</span>";
+                    setcookie("passwordEmptyMsg", "", time() - 3600, "/");
+                }
+                ?>
+                <?php
+                if ($invalidInfoFlag) {
+                    echo "<span class='invalidMsg'>* Invalid Username or Password</span>";
+                    setcookie("invalidInfo", "", time() - 3600, "/");
+                }
+                ?>
+                <p id="rememberMeBlock">
+                    <input class="checkbox" id="remember" name="remember" type="checkbox">
+                    <label id="rememberLabel" for="remember">Remember Me (max 1 Device)</label>
+                </p>
+                <button class="submitBtn" type="submit" name="submit">Login</button>
+                <p class="regularText"><a href="forgotPassword.php" class="textType1">Forgotten Password?</a></p>
+                <p class="regularText">Don't have an account? <a href="signup.php">Signup</a></p>
+            </form>
+        </div>
+    </main>
+    <div class="endSpace"></div>
 </body>
 
 </html>

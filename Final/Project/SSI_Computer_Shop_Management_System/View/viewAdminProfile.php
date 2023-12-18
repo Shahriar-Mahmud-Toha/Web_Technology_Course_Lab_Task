@@ -52,11 +52,13 @@ $con->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSI Computer Shop - Profile Information</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="responsive_smallPhone.css">
 </head>
 
-<body>
+<body id="viewAdminProfileId">
     <?php require "header_admin.php"; ?>
-    <div align="center">
+    <main align="center">
         <table>
             <td></td>
             <td>
@@ -158,12 +160,12 @@ $con->close();
                     </table>
                     <br>
                 </fieldset>
-                <p align="center"><a href="admin.php">Go Back</a></p>
+                <p class="goBackBtn"><a href="admin.php">Go Back</a></p>
             </td>
             <td></td>
         </table>
-    </div>
-    <?php include "footer.php"; ?>
+    </main>
+    <div class="endSpace"></div>
 </body>
 
 </html>

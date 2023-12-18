@@ -1,0 +1,695 @@
+:root {
+    --mainBgCol: rgb(38, 41, 46);
+    --mainBgColAdmin: rgb(30, 32, 37);
+    --mainBgColAdminSidebar: rgb(38, 41, 46);
+    --BgColDepth1: rgb(22, 24, 28);
+    --placeHolderCol: rgb(168, 168, 168);
+    --inputBoxBorderCol: rgb(43, 149, 240);
+    --submitBtnBgCol: rgb(14, 180, 138);
+    --submitBtnBgColHover: rgb(50, 191, 156);
+    --rememberlabelCol: rgb(235, 235, 235);
+    --inputBoxInvalidCol: rgb(255, 82, 96);
+    --hoverCol: rgb(255, 47, 65);
+    --SuccessMsgCol: rgb(50, 191, 156);
+    --dashBoardItemBgCol: rgb(22, 24, 28);
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#loginId {
+    background-color: var(--mainBgCol);
+}
+
+#adminId {
+    font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+    color: white;
+    background-color: var(--mainBgColAdmin);
+}
+
+#userManagementId {
+    background-color: var(--mainBgColAdmin);
+}
+
+#adminTaskId {
+    background-color: var(--mainBgColAdmin);
+    font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+    color: white;
+}
+#editTaskId{
+    background-color: var(--mainBgCol);
+}
+#otpVerifyId{
+    background-color: var(--mainBgCol);
+}
+#signupId {
+    background-color: var(--mainBgCol);
+}
+#resetPassId{
+    background-color: var(--mainBgCol);
+}
+#viewAdminProfileId{
+    background-color: var(--mainBgCol);
+}
+#verifyPasswordId{
+    background-color: var(--mainBgCol);
+}
+#otpVerifyForUpdateId{
+    background-color: var(--mainBgCol);
+}
+#forgotPasswordId {
+    background-color: var(--mainBgCol);
+}
+
+#accSettingsId {
+    background-color: var(--mainBgCol);
+}
+
+main {
+    font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#dashBoard {
+    font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+    color: white;
+    margin-top: 20px;
+}
+
+.mt {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#demoUserLogo {
+    height: 100px;
+    width: 100px;
+    margin-left: 102px;
+}
+
+.inputBox {
+    border: 3px solid var(--BgColDepth1);
+    background-color: var(--BgColDepth1);
+    height: 42px;
+    width: 305px;
+    margin: 20px 0;
+    border-radius: 30px;
+    color: white;
+    padding-left: 15px;
+    display: block;
+}
+
+.inputBox::placeholder {
+    color: var(--placeHolderCol);
+}
+
+
+.inputBox:hover {
+    border: 3px solid var(--inputBoxBorderCol);
+}
+
+.inputBox:focus {
+    border-color: var(--inputBoxBorderCol);
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(17, 126, 216, 0.6);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(17, 126, 216, 0.6);
+}
+
+.txtArea {
+    border: 3px solid var(--BgColDepth1);
+    background-color: var(--BgColDepth1);
+    height: 80px;
+    width: 305px;
+    margin: 20px 0;
+    border-radius: 20px;
+    color: white;
+    padding-left: 15px;
+    padding-top: 15px;
+    display: block;
+}
+
+.txtArea::placeholder {
+    color: var(--placeHolderCol);
+}
+
+.txtArea:hover {
+    border: 3px solid var(--inputBoxBorderCol);
+}
+
+.txtArea:focus {
+    border-color: var(--inputBoxBorderCol);
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(17, 126, 216, 0.6);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(17, 126, 216, 0.6);
+}
+
+.mngUsrBtn {
+    height: 120px;
+    width: 230px;
+    border-radius: 100px;
+    background-color: var(--submitBtnBgCol);
+    border: 3px solid var(--submitBtnBgCol);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.mngUsrBtn:hover {
+    background-color: var(--submitBtnBgColHover);
+    cursor: pointer;
+}
+
+.submitBtn {
+    height: 39px;
+    width: 115px;
+    border-radius: 39px;
+    background-color: var(--submitBtnBgCol);
+    border: 3px solid var(--submitBtnBgCol);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.submitBtn:hover {
+    background-color: var(--submitBtnBgColHover);
+}
+
+.submitReportBtn {
+    height: 80px;
+    width: 15vw;
+    border-radius: 60px;
+    background-color: var(--submitBtnBgCol);
+    border: 3px solid var(--submitBtnBgCol);
+    color: white;
+    font-size: 1.9vw;
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.submitReportBtn:hover {
+    background-color: var(--submitBtnBgColHover);
+}
+
+.checkbox {
+    position: relative;
+    top: 6px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+}
+
+.radioBtn {
+    position: relative;
+    top: 6px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+}
+
+.regularText {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#rememberLabel {
+    color: var(--rememberlabelCol);
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+#rememberMeBlock {
+    text-align: center;
+    margin: 20px 0;
+}
+
+a:link {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: rgb(189, 189, 189);
+    text-decoration: none;
+}
+
+a:active {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+#dashboardItemContentSubmitBtn a:hover {
+    text-decoration: none;
+}
+
+header {
+    font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+header img {
+    height: 80px;
+    width: 80px;
+}
+
+footer {
+    font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+    color: white;
+    margin-top: 18vh;
+    margin-bottom: 5vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+#aboutUsDiv {
+    width: 500px;
+    margin-left: 100px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+#aboutUsDiv p {
+    margin-top: 20px;
+    text-align: justify;
+}
+
+#contactUsDiv {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 100px;
+}
+
+#footerTitle {
+    margin-top: 20px;
+}
+
+.emptyInputBox {
+    border-color: var(--inputBoxInvalidCol);
+}
+
+.invalidMsg {
+    color: var(--inputBoxInvalidCol);
+}
+
+.successMsg {
+    text-align: center;
+    color: var(--SuccessMsgCol);
+    display: block;
+    margin-bottom: 20px;
+}
+
+.genderDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lblGender {
+    margin-left: 10px;
+}
+
+.msg {
+    display: block;
+    margin-top: 10px;
+}
+
+.spMsg {
+    margin-bottom: 10px;
+    font-size: 9px;
+}
+
+.spMsg2 {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.datePicker::placeholder {
+    color: var(--placeHolderCol);
+}
+
+.datePicker {
+    border: 3px solid var(--BgColDepth1);
+    background-color: var(--BgColDepth1);
+    height: 42px;
+    width: 305px;
+    margin: 20px 0;
+    border-radius: 30px;
+    color: white;
+    padding-left: 15px;
+    display: block;
+}
+
+.datePicker:hover {
+    border: 3px solid var(--inputBoxBorderCol);
+}
+
+.datePicker:focus {
+    border-color: var(--inputBoxBorderCol);
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(17, 126, 216, 0.6);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(17, 126, 216, 0.6);
+}
+
+#demoProfilePicIcon {
+    height: 50px;
+    width: 50px;
+}
+
+.submitBtnCreate {
+    height: 39px;
+    width: 215px;
+    border-radius: 39px;
+    background-color: var(--submitBtnBgCol);
+    border: 3px solid var(--submitBtnBgCol);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.addThisTaskBtn {
+    height: 35px;
+    border-radius: 35px;
+    background-color: var(--submitBtnBgCol);
+    border: 3px solid var(--submitBtnBgCol);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.submitBtnCreate:hover {
+    background-color: var(--submitBtnBgColHover);
+}
+.addThisTaskBtn:hover{
+    background-color: var(--submitBtnBgColHover);
+}
+#manageUserIcon {
+    height: 36px;
+    width: 36px;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+#navAdmin ul {
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+#navAdmin ul li {
+    margin: 0 10px;
+    padding: 5px 20px;
+    list-style: none;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: var(--inputBoxInvalidCol);
+    border-radius: 40px;
+    text-transform: capitalize;
+}
+
+#navAdmin ul li:hover {
+    background-color: var(--hoverCol);
+}
+
+#navAdmin ul li a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#navAdmin ul li a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+#comLogoAdmin {
+    height: 4vw;
+    width: 4vw;
+}
+
+#header-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header-admin div a {
+    text-decoration: none;
+}
+
+#header-admin div h1 {
+    font-size: 30px;
+    font-weight: bold;
+    position: relative;
+    top: -20px;
+    display: inline-block;
+}
+
+#taskIcon {
+    height: 35px;
+    height: 35px;
+    width: 35px;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+#accSetIcon {
+    height: 35px;
+    width: 35px;
+    position: relative;
+    top: 5px;
+}
+
+#profilePicAdmin {
+    height: 45px;
+    width: 45px;
+    position: relative;
+    top: 5px;
+}
+
+#logoutIcon {
+    height: 45px;
+    width: 45px;
+    position: relative;
+    top: 5px;
+}
+
+#navAdmin ul #profilePicL {
+    background-color: transparent;
+    margin: 0 10px;
+    padding: 0px;
+}
+
+#navAdmin ul #logoutL {
+    margin: 0 10px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+.dashboardItemContainer1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboardItemContainer2 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboardItem {
+    font-size: 1.5vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dashboardItemContent {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border: 2px solid var(--dashBoardItemBgCol);
+    border-radius: 60px;
+    background-color: var(--dashBoardItemBgCol);
+    width: 28vw;
+    padding: 20px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.numOfCusDiv {
+    margin-bottom: 50px;
+    background-color: var(--dashBoardItemBgCol);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#numOfCus{
+    font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+    font-size: 1vw;
+    font-weight: bold;
+}
+.dashboardItemContentEmp {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border: 2px solid var(--dashBoardItemBgCol);
+    border-radius: 60px;
+    background-color: var(--dashBoardItemBgCol);
+    width: 28vw;
+    padding: 20px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#dashboardItemContentSubmitBtn {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 28vw;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboardItemContentTopCus {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    background-color: var(--dashBoardItemBgCol);
+    padding: 20px;
+    height: 350px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.usrMngTbContainer {
+    text-align: center;
+}
+
+.usrMngTb {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.usrMngTb tr th {
+    width: 15vw;
+    font-size: 1.3vw;
+}
+
+.usrMngTb tr p {
+    font-size: 1.1vw;
+}
+
+.empProPic {
+    height: 4vw;
+    width: 4vw;
+}
+
+.operationsBtnIcon {
+    height: 1.3vw;
+    width: 1.3vw;
+}
+
+.opIconATag a {
+    padding: 0 5px;
+}
+
+.goBackBtn {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.taskAddTextArea {
+    width: 30vw;
+    height: 80px;
+    border-radius: 60px;
+    padding: 20px;
+}
+.taskContainer{
+    text-align: center;
+}
+.taskTb{
+    font-size: 1.5vw;
+    border-collapse: collapse;
+    table-layout: fixed;   
+}
+.snTask{
+    width: 150px;
+    text-align: left;
+}
+.taskTask{
+    width: 600px;
+    text-align: left;
+}
+.timeTask{
+    width: 200px;
+    text-align: center;
+}
+.opTask{
+    width: 200px;
+    text-align: center;
+}
+.snTaskContent{
+    text-align: left;
+    font-size: 1.0vw;
+    margin-top: 20px;
+}
+.timeTaskContent{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.0vw;
+}
+.cngEmailAccSet{
+    font-size: 15px;
+    text-align: center;
+}
+.cngEmailAccSet a{
+    text-decoration: underline;
+}
+.curPassContainerVerPas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.curPassContainerVerPas input{
+    text-align: center;
+}
+.endSpace{
+    height: 100px;
+}

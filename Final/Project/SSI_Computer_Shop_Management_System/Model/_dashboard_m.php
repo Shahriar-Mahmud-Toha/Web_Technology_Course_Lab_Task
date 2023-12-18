@@ -1,5 +1,5 @@
 <?php
-if(strpos(getURL_(),"_dashboard_m.php")){
+if (strpos(getURL_(), "_dashboard_m.php")) {
     header("location:../View/login.php");
 }
 function getTotalSales()
@@ -62,92 +62,64 @@ function getTotalRevenue()
     }
     return $flag;
 }
+function getTotalNumOfCustomers()
+{
+    $flag = null;
+    $con = mysqli_connect('localhost', 'root', '', "admindb");
+    if (!$con) {
+        die("Failed. Error: " . mysqli_connect_error());
+    }
+    $sql = 'SELECT COUNT(id) as count FROM `customertb`';
+    $stmt = $con->prepare($sql);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        $ans = $result->fetch_assoc();
+        $flag = $ans["count"];
+    }
+    else{
+        die("Database Error");
+    }
+    $stmt->close();
+    $con->close();
+    return $flag;
+}
 function getTop3Customers()
 {
     $top = null;
     $count = 0;
-    ?>
-    <table>
-        <caption><b>
-                <font size="10px">Top 3 Customers</font>
-            </b><br><br></caption>
-        <tr>
-            <th width="200px" align="left">
-                <font size="6px">ID</font>
-            </th>
-            <th width="200px" align="left">
-                <font size="6px">Name</font>
-            </th>
-            <th width="200px" align="center">
-                <font size="6px">Email</font>
-            </th>
-            <th width="200px" align="center">
-                <font size="6px">Revenue (BDT)</font>
-            </th>
-        </tr>
-        <?php
-        $con = mysqli_connect('localhost', 'root', '', 'admindb');
-        if (!$con) {
-            die("Failed. Error: " . mysqli_connect_error());
-        }
-        $sql = "SELECT `id`, `name`, `email`, `revenue` FROM `customertb` ORDER BY revenue DESC LIMIT 3";
-        $stmt = $con->prepare($sql);
-        if ($stmt->execute()) {
-            $result = $stmt->get_result();
-            if ($result->num_rows > 0) {
-                while ($ans = $result->fetch_assoc()) {
-                    $id = $ans["id"];
-                    $name = $ans["name"];
-                    $email = $ans["email"];
-                    $revenue = $ans["revenue"];
-                    if ($count < 1) {
-                        $top = $id;
-                        $count++;
-                    }
-                    ?>
-                    <tr>
-                        <td>
-                            <p align="left">
-                                <font size="5px">
-                                    <?php echo $id ?>
-                                </font>
-                            </p>
-                        </td>
-                        <td>
-                            <p align="left">
-                                <font size="5px">
-                                    <?php echo $name ?>
-                                </font>
-                            </p>
-                        </td>
-                        <td>
-                            <p align="center">
-                                <font size="5px">
-                                    <?php echo $email ?>
-                                </font>
-                            </p>
-                        </td>
-                        <td>
-                            <p align="center">
-                                <font size="5px">
-                                    <?php echo $revenue ?>
-                                </font>
-                            </p>
-                        </td>
-                    </tr>
-                    <?php
+    $con = mysqli_connect('localhost', 'root', '', 'admindb');
+    if (!$con) {
+        die("Failed. Error: " . mysqli_connect_error());
+    }
+    $sql = "SELECT `id`, `name`, `email`, `revenue` FROM `customertb` ORDER BY revenue DESC LIMIT 3";
+    $stmt = $con->prepare($sql);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            while ($ans = $result->fetch_assoc()) {
+                $id = $ans["id"];
+                $arr["id"][] = $ans["id"];
+                $name = $ans["name"];
+                $arr["name"][] = $ans["name"];
+                $email = $ans["email"];
+                $arr["email"][] = $ans["email"];
+                $revenue = $ans["revenue"];
+                $arr["revenue"][] = $ans["revenue"];
+                if ($count < 1) {
+                    $top = $id;
+                    $count++;
                 }
             }
-        } else {
-            echo "No Data Found";
         }
-        $stmt->close();
-        $con->close();
-        ?>
-    </table>
-    <?php
+    } else {
+        echo "No Data Found";
+    }
+    $stmt->close();
+    $con->close();
     if ($top != null) {
-        return $top;
+        return $arr;
+    } else {
+        return null;
     }
 }
 function getMostSoldProduct()
@@ -237,10 +209,10 @@ function generateDashboardReport($totalSales, $totalRevenue, $mostSoldProduct, $
 {
     $report = "Total Sales: $totalSales Taka<br>
     Total Revenue: $totalRevenue Taka<br>
-    Most Sold Product(till now): $mostSoldProduct(product ID)<br>
-    Current Employee of the Month: $empOfTheMonth(product username)<br>
+    Most Sold Product ID (till now): $mostSoldProduct<br>
+    Current Employee of the Month (username): $empOfTheMonth<br>
     Current Total Employee Wage: $totalEmpWage Taka<br>
-    Top Customer: $topCustomers(customer ID)<br>";
+    Top Customer ID: " . $topCustomers . "<br>";
     return $report;
 }
 function sendReportToAdmin($report, $username)

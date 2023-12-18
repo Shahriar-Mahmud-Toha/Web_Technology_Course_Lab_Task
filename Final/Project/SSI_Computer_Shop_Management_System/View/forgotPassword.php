@@ -17,10 +17,14 @@ if (isset($_SESSION["loginVerified"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSI Computer Shop - Forgot Password</title>
+    <script src="validateForm.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="responsive_smallPhone.css">
 </head>
 
-<body>
+<body id="forgotPasswordId">
     <?php require "header.php"; ?>
+    <main>
     <div align="center">
         <table>
             <td></td>
@@ -32,7 +36,7 @@ if (isset($_SESSION["loginVerified"])) {
                     <?php if (!isset($_SESSION["otpSent"])) {
                         session_destroy(); ?>
 
-                        <form action="../Controller/forgotPasswordOP.php" method="post" novalidate>
+                        <form action="../Controller/forgotPasswordOP.php" method="post" novalidate onsubmit="return validForgotPasswordForm(this);">
                             <table>
                                 <tr>
                                     <td>
@@ -107,7 +111,8 @@ if (isset($_SESSION["loginVerified"])) {
             <td></td>
         </table>
     </div>
-    <?php include "footer.php"; ?>
+    </main>
+    <div class="endSpace"></div>
 </body>
 
 </html>

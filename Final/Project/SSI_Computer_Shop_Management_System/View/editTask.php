@@ -37,18 +37,20 @@ if (!$btn) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSI Computer Shop - Edit Task</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="responsive_smallPhone.css">
 </head>
 
-<body>
+<body id="editTaskId">
     <?php require "header_admin.php"; ?>
     <br><br>
-    <div align="center">
+    <main align="center">
         <table>
             <td></td>
             <td>
                 <form action="../Controller/editTaskOP.php" method="post" novalidate>
-                    <textarea name="task" id="task" cols="40" rows="2" value="<?php ?>"></textarea><br>
-                    <input type="submit" name="submit" value="Edit this Task">
+                    <textarea class="taskAddTextArea" name="task" id="task" cols="40" rows="2" value="<?php ?>"></textarea><br>
+                    <input class="addThisTaskBtn" type="submit" name="submit" value="Edit this Task">
                     <br>
                 </form>
                 <?php
@@ -62,8 +64,8 @@ if (!$btn) {
             </td>
             <td></td>
         </table>
-    </div>
-    <?php include "footer.php"; ?>
+    </main>
+    <div class="endSpace"></div>
 </body>
 
 </html>
